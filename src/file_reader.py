@@ -3,6 +3,7 @@
 import csv
 from deputado import *
 from vetor import *
+from main import *
 
 '''
 Leitura e manipulação do arquivo
@@ -26,4 +27,9 @@ def ler_votacao(path):
 	return voting_dict
 
 print(ler_votacao("../data/exemplo.csv"))
+x = Deputado("teste", "pb", "mito", [5, 10])
 
+y = Deputado("biu", "tttb", "wwww", [10, 10])
+p = {"teste":x, "biu":y}
+print(p["teste"].votos)
+print(comparar("teste", "biu",{"teste":x, "biu":y}))

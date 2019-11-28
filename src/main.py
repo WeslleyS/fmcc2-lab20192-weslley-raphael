@@ -3,7 +3,7 @@
 from deputado import *
 from vetor import *
 
-matriculas = ["", "", ""] #Preencham suas matrículas dentro desta variável
+matriculas = ["119110413", "119111241", ""] #Preencham suas matrículas dentro desta variável
 
 '''
 Tarefa 02 - Comparar o alinhamento de dois deputados
@@ -13,12 +13,12 @@ da classe Deputado, e retorna o produto interno representando
 o grau de similaridade entre a política de voto dos dois deputados dados.
 '''
 def comparar(dep_a, dep_b, deputados):
-	raise NotImplementedError
+	return Vetor(deputados[dep_a].votos) * Vetor(deputados[dep_b].votos)
 
 '''
 Tarefa 03 - Encontrar o deputado mais similar com um deputado dado
 A função deve receber o nome de um deputado e o dicionário mapeando
-o nome do deputado com seu objeto da classe Deputado, e o nome do deputado 
+o nome do deputado com seu objeto da classe Deputado, e retorna o nome do deputado 
 mais similar ao que foi dado como entrada. No caso, de haver mais de um
 deputado com o grau de similaridade máxima, todos os nomes devem ser retornados
 em uma lista.
