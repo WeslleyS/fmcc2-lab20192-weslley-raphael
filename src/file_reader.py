@@ -24,3 +24,6 @@ def ler_votacao(path):
 		voting_dict[dep_nome] = Deputado(dep_nome, dep_estado, dep_partido, Vetor(dep_votos))
 
 	return voting_dict
+
+print(ler_votacao("../data/exemplo.csv"))
+

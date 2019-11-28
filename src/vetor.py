@@ -29,7 +29,11 @@ class Vetor:
     @return objeto da classe Vetor representando o vetor resultante.
     '''
     def __add__(self, vetor):
-        raise NotImplementedError
+		resultante = []
+		for e in range(self.size):
+			soma = self.entradas[i] + vetor.entradas[i] 
+			resultante.put(soma)
+		return Vetor(resultante)
     
     def __radd__(self, vetor):
         return self.__add__(vetor)
@@ -43,18 +47,25 @@ class Vetor:
             caso mult seja outro vetor.
     '''
     def __mul__(self, mult):
-        
+        resultante = []
         '''
         Implementa a multiplicação por escalar
         '''
         if isinstance(mult, float) or isinstance(mult, int):
-            raise NotImplementedError
+            for e in range(self.size):
+				produto = self.entradas[i] * mult
+				resultante.put(produto)
         
         '''
         Implementa o produto vetorial
         '''
         if isinstance(mult, Vetor):
-            raise NotImplementedError
+			for e in range(self.size):
+				produto = self.entradas[i] * mult.entradas[i] 
+				resultante.put(produto)
+		
+		return Vetor(resultante)
+		
     
     def __rmul__(self, mult):
         return self.__mul__(mult)
@@ -77,7 +88,7 @@ class Vetor:
     @return boolean True se forem igual, False caso contrário
     '''
     def __eq__(self, vetor):
-        raise NotImplementedError
+        return self.entradas == vetor
     
     def __neq__(self, vetor):
         return not self.__eq__(vetor)
