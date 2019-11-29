@@ -27,9 +27,16 @@ def ler_votacao(path):
 	return voting_dict
 
 print(ler_votacao("../data/exemplo.csv"))
-x = Deputado("teste", "pb", "mito", [5, 10])
 
-y = Deputado("biu", "tttb", "wwww", [10, 10])
+
+x = Deputado("teste", "pb", "wwww", Vetor([1, 0]))
+y = Deputado("biu", "p2b", "wwww", Vetor([2, 0]))
 p = {"teste":x, "biu":y}
-print(p["teste"].votos)
-print(comparar("teste", "biu",{"teste":x, "biu":y}))
+p["irineu"] = Deputado("irineu", "xxxx", "mito", Vetor([1, 1]))
+
+
+a = Vetor([1,2])
+b = Vetor([9,8])
+
+l =  ["irineu", "biu"]
+print(registro_medio_estado("pb", p))

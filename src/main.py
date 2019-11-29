@@ -24,7 +24,24 @@ deputado com o grau de similaridade máxima, todos os nomes devem ser retornados
 em uma lista.
 '''
 def mais_similar(dep, deputados):
-	raise NotImplementedError
+	deputados_similares = []
+	grau_similaridade = 0
+	votos_deputadado = deputados[dep].votos
+	
+	for e in deputados:
+		grau_temporario = comparar(dep, e, deputados).soma_elementos()
+		
+		if grau_temporario > grau_similaridade and e != dep:
+			deputados_similares = []
+			grau_similaridade = grau_temporario
+			deputados_similares.append(e)
+		elif grau_temporario == grau_similaridade and e != dep:
+			deputados_similares.append(e)
+	
+	if len(deputados_similares) == 1:
+		return deputados_similares[0]
+	
+	return deputados_similares
 
 '''
 Tarefa 04 - Encontrar o deputado menos similar com um deputado dado
@@ -32,7 +49,24 @@ Similar a tarefa 03, porém deve retornar o nome do deputado menos similar
 ou uma lista com todos os nomes, em caso de empate.
 '''
 def menos_similar(dep, deputados):
-	raise NotImplementedError
+	deputados_pouco_similares = []
+	grau_similaridade = len(deputados)
+	votos_deputadado = deputados[dep].votos
+	
+	for e in deputados:
+		grau_temporario = comparar(dep, e, deputados).soma_elementos()
+		
+		if grau_temporario < grau_similaridade and e != dep:
+			deputados_pouco_similares = []
+			grau_similaridade = grau_temporario
+			deputados_pouco_similares.append(e)
+		elif grau_temporario == grau_similaridade and e != dep:
+			deputados_pouco_similares.append(e)
+	
+	if len(deputados_pouco_similares) == 1:
+		return deputados_pouco_similares[0]
+	
+	return deputados_pouco_similares
 
 '''
 Tarefa 05 - Implementar a função encontra_similaridade_media(dep, dep_set, deputados)
@@ -50,8 +84,17 @@ Isto é, realize adição vetorial na listas representando o registro de suas vo
 e então divida a soma pelo número de vetores. O resultado deve ser um vetor.
 '''
 def encontra_registro_medio(dep_set, deputados):
-	raise NotImplementedError
-
+	listaResposta = []
+	for e in dep_set:
+		listaResposta.append(0)
+	
+	vetorResposta = Vetor(listaResposta)
+	for e in dep_set:
+		vetorResposta = vetorResposta + Vetor(deputados[e].votos)
+		
+	return vetorResposta.__truediv__(len(dep_set))
+		
+		
 '''
 Tarefa 07 - Implemente as funções a seguir
 - registro_medio_partido(partido, deputados) que, dado o nome de um partido 
@@ -65,13 +108,29 @@ O retorno de todas as funções descritas nesta tarefa deve ser um vetor.
 '''
 
 def registro_medio_partido(partido, deputados):
-	raise NotImplementedError
+	deputadosDoPartido = []
+	for e in deputados:
+		if deputados[e].partido == partido:
+			deputadosDoPartido.append(e)
+			
+	return encontra_registro_medio(deputadosDoPartido, deputados)
     
 def registro_medio_estado(estado, deputados):
-	raise NotImplementedError
+	deputadosDoEstado = []
+	for e in deputados:
+		if deputados[e].estado == estado:
+			deputadosDoEstado.append(e)
+			
+	return encontra_registro_medio(deputadosDoEstado, deputados)
     
 def registro_medio_regiao(regiao, deputados):
 	raise NotImplementedError
+	deputadosDaRegiao = []
+	for e in deputados:
+		if deputados[e].regiao == regiao:
+			deputadosDaRegiao.append(e)
+			
+	return encontra_registro_medio(deputadosDaRegiao, deputados)
 
 '''
 Tarefa 08 - Implemente as funções a seguir:

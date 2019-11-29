@@ -96,3 +96,11 @@ class Vetor:
 	'''
 	def __str__(self):
 		return "Vetor" + str(self.entradas)
+		
+	
+	def soma_elementos(self):
+		soma = 0
+		for e in self.entradas:
+			soma += e
+		
+		return soma
