@@ -3,7 +3,9 @@
 import csv
 from deputado import *
 from vetor import *
+
 from main import *
+
 
 '''
 Leitura e manipulação do arquivo
@@ -26,17 +28,28 @@ def ler_votacao(path):
 
 	return voting_dict
 
-print(ler_votacao("../data/exemplo.csv"))
+
+#print(ler_votacao("../data/exemplo.csv"))
 
 
-x = Deputado("teste", "pb", "wwww", Vetor([1, 0]))
-y = Deputado("biu", "p2b", "wwww", Vetor([2, 0]))
-p = {"teste":x, "biu":y}
-p["irineu"] = Deputado("irineu", "xxxx", "mito", Vetor([1, 1]))
+x = Deputado("teste", "PB", "PSOL", Vetor([1, 1, 1, 1]))
+y = Deputado("biu", "PB", "PSDB", Vetor([-1, -1, -1, 1]))
+z = Deputado("irineu", "AM", "PT", Vetor([1, 1, 0, 0]))
+f = Deputado("joao", "AM", "PT", Vetor([1, 1, 1, 1]))
+p = {"teste":x, "biu":y, "irineu": z, "joao": f}
+p["oi"] = []
+#print(amigos_adocicados(p))
+p['oi'].append(2)
+p['oi'].append(3)
+#print(p)
 
+l =  ["irineu", "biu", "teste"]
+#print(encontra_registro_medio(l, p))
+#print(menos_similar("teste", p))
 
-a = Vetor([1,2])
+a = Vetor([2,2])
 b = Vetor([9,8])
+#print(b / (3))
 
-l =  ["irineu", "biu"]
-print(registro_medio_estado("pb", p))
+
+

@@ -48,6 +48,7 @@ class Vetor:
 	'''
 	def __mul__(self, mult):
 		resultante = []
+		
 		'''
 		Implementa a multiplicação por escalar
 		'''
@@ -64,7 +65,7 @@ class Vetor:
 				produto = self.entradas[i] * mult.entradas[i] 
 				resultante.append(produto)	
 		return Vetor(resultante)
-		
+	
 	def __rmul__(self, mult):
 		return self.__mul__(mult)
 	
@@ -77,7 +78,7 @@ class Vetor:
 	'''
 	Implementa a divisão por escalar.
 	'''
-	def __truediv__(self, fator):
+	def __div__(self, fator):
 		return self.__mul__(1.0/fator);
 	
 	'''
@@ -97,7 +98,7 @@ class Vetor:
 	def __str__(self):
 		return "Vetor" + str(self.entradas)
 		
-	
+
 	def soma_elementos(self):
 		soma = 0
 		for e in self.entradas:
